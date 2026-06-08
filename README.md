@@ -8,12 +8,20 @@
 **CAMIS** is an AI-driven, end-to-end computer vision platform designed for Next-Generation MRO (Maintenance, Repair, and Overhaul) facilities. It automates the detection, classification, and reporting of exterior aircraft structural damage, replacing fragmented manual inspections with a unified, fleet-wide digital tracking system.
 
 ## 📖 Table of Contents
-- [The Problem & Our Solution](#the-problem--our-solution)
-- [System Architecture](#system-architecture)
-- [Key Engineering Features](#key-engineering-features)
-- [Dataset & Classes](#dataset--classes)
-- [Tech Stack](#tech-stack)
-- [Team Gabbar](#team-gabbar)
+
+- [1. Project Overview](#1-project-overview)
+- [2. Project Milestones](#2-project-milestones)
+  - [Milestone 1: Problem Definition & Architecture](./docs/Milestone_1_Research_Architecture.md)
+  - [Milestone 2: Dataset Acquisition & Algorithms](./docs/Milestone_2_Dataset_Algorithms.md)
+- [3. The Problem & Our Solution](#3-the-problem--our-solution)
+- [4. System Architecture](#4-system-architecture)
+  - [Digital Image Processing (DIP) Pipeline](#digital-image-processing-dip-pipeline)
+  - [Detection Model (RT-DETR-L & SAHI)](#detection-model-rt-detr-l--sahi)
+  - [LLM Reporting Engine (Gemma 3)](#llm-reporting-engine-gemma-3)
+- [5. Dataset & Taxonomy](#5-dataset--taxonomy)
+- [6. Fleet Management & Power BI Analytics](#6-fleet-management--power-bi-analytics)
+- [7. Tech Stack](#7-tech-stack)
+- [8. Team Gabbar](#8-team-gabbar)
 
 ---
 
