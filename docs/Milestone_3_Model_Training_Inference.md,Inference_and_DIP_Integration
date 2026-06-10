@@ -20,4 +20,4 @@ Following the simulated validation, we established the inference pipeline to tes
 * **Blind Inference:** Executed predictions on raw, unannotated test images.
 * **Threshold Tuning:** Dynamically adjusted confidence (`conf=0.05` to `0.25`) and Intersection over Union (`iou=0.45`) thresholds to successfully uncover faint or complex structural damage.
 * **Pipeline Integration:** The visual outputs validate the effectiveness of passing raw inspection imagery through our initial Digital Image Processing (DIP) algorithms prior to deep learning-based detection for next-generation MRO systems.
-* **Project Team:** Executed in collaboration with Vishnu K Mahesh, Namitha Madhu, Harish R, and Vishal N S.
+
