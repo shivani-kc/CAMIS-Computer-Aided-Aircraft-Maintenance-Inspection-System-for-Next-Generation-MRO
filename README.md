@@ -13,10 +13,11 @@
 - [2. Project Milestones](#2-project-milestones)
   - [Milestone 1: Problem Definition & Architecture](./docs/Milestone_1_Research_Architecture.md)
   - [Milestone 2: Dataset Acquisition & Algorithms](./docs/Milestone_2_Dataset_Algorithms.md)
+  - [Milestone 3: Model Training, Inference, and DIP Integration](./docs/Milestone_3_Model_Training_Inference.md)
 - [3. The Problem & Our Solution](#3-the-problem--our-solution)
 - [4. System Architecture](#4-system-architecture)
   - [Digital Image Processing (DIP) Pipeline](#digital-image-processing-dip-pipeline)
-  - [Detection Model (RT-DETR-L & SAHI)](#detection-model-rt-detr-l--sahi)
+  - [Detection Model (YOLOv8l & SAHI)](#detection-model-yolov8l--sahi)
   - [LLM Reporting Engine (Gemma 3)](#llm-reporting-engine-gemma-3)
 - [5. Dataset & Taxonomy](#5-dataset--taxonomy)
 - [6. Fleet Management & Power BI Analytics](#6-fleet-management--power-bi-analytics)
@@ -28,7 +29,7 @@
 ## 🛑 The Problem & 💡 Our Solution
 **The Status Quo:** Manual walkaround inspections are slow, highly subjective, and prone to human error caused by inspector fatigue and poor hangar lighting. Critical hairline cracks or early-stage corrosion often go unnoticed. Furthermore, isolated paper-based reports make fleet-wide structural tracking impossible.
 
-**The CAMIS Solution:** We replace redundant multi-stage cascading models with a **2-Stage Integrated Multi-Task Pipeline**. CAMIS ingests high-resolution inspection photos, physically enhances them using a 7-stage Digital Image Processing (DIP) suite, and feeds them into a state-of-the-art **RT-DETR-L** transformer. The system concurrently extracts spatial coordinates and damage severity, passing the data to an **LLM** for automated compliance reporting and Power BI for fleet-level heatmapping.
+**The CAMIS Solution:** We replace redundant multi-stage cascading models with a **2-Stage Integrated Multi-Task Pipeline**. CAMIS ingests high-resolution inspection photos, physically enhances them using a 7-stage Digital Image Processing (DIP) suite, and feeds them into a state-of-the-art **YOLOv8l** object detection model. The system concurrently extracts spatial coordinates and damage severity, passing the data to an **LLM** for automated compliance reporting and Power BI for fleet-level heatmapping.
 
 ---
 
@@ -36,7 +37,7 @@
 
 1. **Digital Image Processing (DIP) Pipeline:** Raw images undergo Laplacian Variance (blur detection), Gray World Assumption (white balance), Gamma Correction, CLAHE (contrast enhancement), and Unsharp Masking to prepare metallic surfaces for the AI.
 2. **SAHI (Slicing Aided Hyper Inference):** High-resolution images are mathematically sliced into overlapping tiles to prevent the compression/destruction of micro-crack pixels.
-3. **RT-DETR-L:** The Real-Time Detection Transformer utilizes global self-attention to identify both macroscopic dents and microscopic splits simultaneously.
+3. **YOLOv8l:** The YOLOv8 Large model utilizes an advanced convolutional neural network (CNN) architecture to accurately identify both macroscopic dents and smaller structural defects simultaneously.
 4. **Weighted Box Fusion (WBF):** Consolidates overlapping bounding boxes into highly accurate, tight localizations.
 5. **Gemma 3 LLM Reporting:** Contextualizes the detected bounding boxes against the aircraft's historical logs to write human-readable maintenance narratives.
 
@@ -62,12 +63,12 @@ The model is trained on a unified, high-quality dataset of **~25,000 images** ag
 
 ## 💻 Tech Stack
 * **Deep Learning Framework:** PyTorch, PyTorch Lightning
-* **Vision Models:** RT-DETR-L (Hugging Face / TIMM)
+* **Vision Models:** YOLOv8l (Ultralytics)
 * **Inference Optimization:** SAHI, WBF
 * **Image Processing:** OpenCV, NumPy
 * **Automated Reporting:** Gemma 3 (via FastAPI backend)
 * **Analytics:** Microsoft Power BI
-* **Compute:** Optimized for NVIDIA H200 (141GB VRAM) using BFloat16 Mixed Precision.
+* **Compute:** Optimized for NVIDIA A100 using Automatic Mixed Precision (`amp=True`).
 
 ---
 
